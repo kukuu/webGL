@@ -74,6 +74,10 @@ gl.attachShader(program, fragmentShader);
 //Link program
 gl.linkProgram();
 
-//Inject data - vertices co-ordinates
+//Inject data - vertices co-ordinates and assign resource
 const positionLocation = gl.getAttribLocation(program, `position`);
 gl.enableVertexAttribArray(positionLocation);
+gl.vertexAttribPointer(positionLocation, 3, gl.FLOAT, FALSE, 0, 0);
+
+gl.useProgram(program);
+gl.drawArrays(gl.TRIANGLES, 0, 3);
