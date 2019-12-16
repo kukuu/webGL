@@ -55,7 +55,8 @@ gl.compileShader(vertexShader);
 
 //Create fragment shader
 //note vec4 is set to 4 inputs RGBA
-//Note main is passed as a sting, since it is an input value.
+//Note main is passed as a string, since it is an input value.
+//This will allow any further interpolation.
 const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 gl.shadeSource(fragmentShader, `
 	void main() {
@@ -71,4 +72,8 @@ gl.attachShader(program, vertexShader);
 gl.attachShader(program, fragmentShader);
 
 //Link program
-gl.linkProgram()
+gl.linkProgram();
+
+//Inject data - vertices co-ordinates
+const positionLocation = gl.getAttribLocation(program, `position`);
+gl.enableVertexAttribArray(positionLocation);
