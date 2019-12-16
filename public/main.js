@@ -55,6 +55,7 @@ gl.compileShader(vertexShader);
 
 //Create fragment shader
 //note vec4 is set to 4 inputs RGBA
+//Note main is passed as a sting, since it is an input value.
 const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 gl.shadeSource(fragmentShader, `
 	void main() {
